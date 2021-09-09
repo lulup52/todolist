@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Listes;
+use App\Models\Todos;
 
 class ListesController extends Controller
 {
@@ -15,6 +16,17 @@ class ListesController extends Controller
     public function index()
     {
         return Listes::orderBy('created_at', 'DESC')->get();
+    }
+
+
+    public static  function todoListe(Request $request)
+    {
+        $todoListe = Todos::where("liste_id", "$request->id" )->get();
+        if(count($todoListe) !== 0) {
+            return $todoListe;    
+
+        }
+        return "this list doesn't exist";
     }
 
     /**

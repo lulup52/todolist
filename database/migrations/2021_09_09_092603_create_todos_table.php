@@ -18,6 +18,8 @@ class CreateTodosTable extends Migration
             $table->string('content');
             $table->boolean('finished')->default(false);
             $table->timestamps();
+
+            $table->foreignId('liste_id')->constrained();
         });
     }
 

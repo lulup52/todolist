@@ -33,3 +33,5 @@ Route::prefix('/todos')->group(function(){
     Route::delete('/destroy/{id}', [TodosController::class, 'destroy']);
     } 
 );
+
+Route::get('/todos_liste/{id}', [ListesController::class, 'todoListe']);

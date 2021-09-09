@@ -83,7 +83,7 @@ class TodosController extends Controller
             return $existingTodo;
         }
 
-        return "liste not found";
+        return "todo item not found";
     }
 
     /**
@@ -94,6 +94,13 @@ class TodosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $existingTodo = Todos::find($id);
+        if($existingTodo) {
+            $existingTodo->delete();
+
+            return "the todo item is successfully deleted";
+        }
+        return "the todo item is not found";
+
     }
 }
