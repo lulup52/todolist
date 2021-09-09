@@ -15,15 +15,18 @@ class ListesController extends Controller
      */
     public function index()
     {
-        return Listes::orderBy('created_at', 'DESC')->get();
+        $allListes = Listes::orderBy('created_at', 'DESC')->get();
+        return view("welcome", compact('allListes'));
     }
 
 
     public static  function todoListe(Request $request)
     {
+        $listeTitle = Listes::where("id", "$request->id" )->get()[0]->name;
+        $liste_id = $request->id;
         $todoListe = Todos::where("liste_id", "$request->id" )->get();
         if(count($todoListe) !== 0) {
-            return $todoListe;    
+            return view("todoListe", compact('todoListe', 'liste_id', 'listeTitle'));    
 
         }
         return "this list doesn't exist";

@@ -34,4 +34,4 @@ Route::prefix('/todos')->group(function(){
     } 
 );
 
-Route::get('/todos_liste/{id}', [ListesController::class, 'todoListe']);
+Route::get('/todo_liste/{id}', [ListesController::class, 'todoListe']);
