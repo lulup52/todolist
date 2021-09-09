@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Listes;
 
-class ListesController extends Controller
+class TodosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +13,7 @@ class ListesController extends Controller
      */
     public function index()
     {
-        return Listes::orderBy('created_at', 'DESC')->get();
+        //
     }
 
     /**
@@ -35,11 +34,8 @@ class ListesController extends Controller
      */
     public function store(Request $request)
     {
-        $newListe = new Listes;
-        $newListe->name = $request->item["name"];
-        $newListe->save();
-
-        return $newListe;    }
+        //
+    }
 
     /**
      * Display the specified resource.
@@ -72,15 +68,7 @@ class ListesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $existingListe = Listes::find($id);
-        if($existingListe) {
-            $existingListe->finished = $request->item['finished'] ? true : false;
-            $existingListe->save();
-
-            return $existingListe;
-        }
-
-        return "liste not found";
+        //
     }
 
     /**
@@ -91,14 +79,6 @@ class ListesController extends Controller
      */
     public function destroy($id)
     {
-        $existingListe = Listes::find($id);
-        if($existingListe) {
-            $existingListe->delete();
-
-            return "the liste is successfully deleted";
-        }
-        return "the liste is not found";
-
-
+        //
     }
 }
