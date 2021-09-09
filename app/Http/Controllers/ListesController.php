@@ -25,11 +25,10 @@ class ListesController extends Controller
         $listeTitle = Listes::where("id", "$request->id" )->get()[0]->name;
         $liste_id = $request->id;
         $todoListe = Todos::where("liste_id", "$request->id" )->get();
-        if(count($todoListe) !== 0) {
-            return view("todoListe", compact('todoListe', 'liste_id', 'listeTitle'));    
+        
+        return view("todoListe", compact('todoListe', 'liste_id', 'listeTitle'));    
 
-        }
-        return "this list doesn't exist";
+        
     }
 
     /**
@@ -51,11 +50,11 @@ class ListesController extends Controller
     public function store(Request $request)
     {
         $newListe = new Listes;
-        $newListe->name = $request->item["name"];
+        $newListe->name = $request->name;
         $newListe->save();
 
-        return $newListe;    
-    }
+        $allListes = Listes::orderBy('created_at', 'DESC')->get();
+        return view("welcome", compact('allListes'));    }
 
     /**
      * Display the specified resource.
@@ -111,7 +110,9 @@ class ListesController extends Controller
         if($existingListe) {
             $existingListe->delete();
 
-            return "the liste is successfully deleted";
+            $allListes = Listes::orderBy('created_at', 'DESC')->get();
+            return view("welcome", compact('allListes'));
+
         }
         return "the liste is not found";
 

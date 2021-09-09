@@ -19,18 +19,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/listes', [ListesController::class, 'index']);
+Route::get('/', [ListesController::class, 'index']);
+
 Route::prefix('/listes')->group(function(){
     Route::post('/store', [ListesController::class, 'store']);
     Route::put('/update/{id}', [ListesController::class, 'update']);
-    Route::delete('/destroy/{id}', [ListesController::class, 'destroy']);
+    Route::get('/destroy/{id}', [ListesController::class, 'destroy']);
     } 
 );
 Route::get('/todos', [TodosController::class, 'index']);
 Route::prefix('/todos')->group(function(){
     Route::post('/store', [TodosController::class, 'store']);
     Route::put('/update/{id}', [TodosController::class, 'update']);
-    Route::delete('/destroy/{id}', [TodosController::class, 'destroy']);
+    Route::get('/destroy/{id}', [TodosController::class, 'destroy']);
     } 
 );
 

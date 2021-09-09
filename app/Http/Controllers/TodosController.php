@@ -37,7 +37,8 @@ class TodosController extends Controller
     public function store(Request $request)
     {
         $newTodos = new Todos;
-        $newTodos->content = $request->item["content"];
+        $newTodos->content = $request->content;
+        $newTodos->liste_id = $request->liste_id;
         $newTodos->save();
 
         return $newTodos;
