@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ListesController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/listes', [ListesController::class, 'index']);
+Route::prefix('/listes')->group(function(){
+    Route::post('/store', [ListesController::class, 'store']);
+    Route::put('/update/{id}', [ListesController::class, 'update']);
+    Route::delete('/destroy/{id}', [ListesController::class, 'destroy']);
+    } 
+);
