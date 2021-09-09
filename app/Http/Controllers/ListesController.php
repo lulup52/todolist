@@ -25,7 +25,7 @@ class ListesController extends Controller
         $listeTitle = Listes::where("id", "$request->id" )->get()[0]->name;
         $liste_id = $request->id;
         $todoListe = Todos::where("liste_id", "$request->id" )->get();
-        
+
         return view("todoListe", compact('todoListe', 'liste_id', 'listeTitle'));    
 
         
@@ -53,8 +53,9 @@ class ListesController extends Controller
         $newListe->name = $request->name;
         $newListe->save();
 
-        $allListes = Listes::orderBy('created_at', 'DESC')->get();
-        return view("welcome", compact('allListes'));    }
+        return redirect('/api');
+    }
+
 
     /**
      * Display the specified resource.
@@ -110,8 +111,7 @@ class ListesController extends Controller
         if($existingListe) {
             $existingListe->delete();
 
-            $allListes = Listes::orderBy('created_at', 'DESC')->get();
-            return view("welcome", compact('allListes'));
+            return redirect('/api');
 
         }
         return "the liste is not found";

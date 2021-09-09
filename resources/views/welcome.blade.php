@@ -21,14 +21,15 @@
                 </button>
             </div>
             <div>
+                <a href="/api/listes/update/{{$liste->id}}" >modifier</a>
+            </div>
+            <div>
                 <a href="/api/listes/destroy/{{$liste->id}}" >delete</a>
             </div>
         </div>
        @endforeach
        <div>
-            <button id='inputDisplay'>
-               +
-            </button>
+            
 
             <div id='formContainer' >
                 <form action="/api/listes/store" method="post" class="form-example">

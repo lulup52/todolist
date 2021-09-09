@@ -41,7 +41,7 @@ class TodosController extends Controller
         $newTodos->liste_id = $request->liste_id;
         $newTodos->save();
 
-        return $newTodos;
+       return redirect("/api/todo_liste/$request->liste_id");
     }
 
     /**
@@ -96,10 +96,11 @@ class TodosController extends Controller
     public function destroy($id)
     {
         $existingTodo = Todos::find($id);
+        $listeId= $existingTodo->liste_id;
         if($existingTodo) {
             $existingTodo->delete();
 
-            return "the todo item is successfully deleted";
+            return redirect("/api/todo_liste/$listeId");
         }
         return "the todo item is not found";
 

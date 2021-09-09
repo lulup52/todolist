@@ -24,9 +24,7 @@
             </div>
             @endforeach
             <div class='addButon'>
-                <button id='inputDisplay'>
-                +
-                </button>
+            
 
                 <div id='formContainer' >
                     <form action="/api/todos/store" method="post" class="form-example">
