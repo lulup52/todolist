@@ -39,7 +39,8 @@ class ListesController extends Controller
         $newListe->name = $request->item["name"];
         $newListe->save();
 
-        return $newListe;    }
+        return $newListe;    
+    }
 
     /**
      * Display the specified resource.

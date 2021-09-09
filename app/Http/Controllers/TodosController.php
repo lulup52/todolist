@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Todos;
 
 class TodosController extends Controller
 {
@@ -13,7 +14,8 @@ class TodosController extends Controller
      */
     public function index()
     {
-        //
+        return Todos::orderBy('created_at', 'DESC')->get();
+        
     }
 
     /**
@@ -34,7 +36,11 @@ class TodosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newTodos = new Todos;
+        $newTodos->content = $request->item["content"];
+        $newTodos->save();
+
+        return $newTodos;
     }
 
     /**
@@ -68,7 +74,16 @@ class TodosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $existingTodo = Todos::find($id);
+        if($existingTodo) {
+            $existingTodo->finished = $request->item['finished'] ? true : false;
+            $existingTodo->content = $request->item['content'];
+            $existingTodo->save();
+
+            return $existingTodo;
+        }
+
+        return "liste not found";
     }
 
     /**
