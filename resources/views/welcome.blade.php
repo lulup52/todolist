@@ -35,7 +35,7 @@
 
                             </div>
                             <div class='optionContainer' id="option{{$liste->id}}"> 
-                                <button class='optionButton' onClick="updateListe('{{$liste->id}}')" id="{{$liste->id}}">modifier</button>
+                                <button class='optionButton' onClick="updateListe('{{$liste->id}}')" id="{{$liste->id}}">edit</button>
                                 <a class='optionButton actionButton' href="/api/listes/destroy/{{$liste->id}}" >delete</a>
                             </div>
                         </div>

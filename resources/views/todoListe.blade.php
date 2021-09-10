@@ -37,7 +37,7 @@
 
                                 </div>
                                 <div class='optionContainer' id="option{{$todo->id}}"> 
-                                    <button class='' onClick="updateTodo('{{$todo->id}}')" id="{{$todo->id}}">modifier</button>
+                                    <button class='' onClick="updateTodo('{{$todo->id}}')" id="{{$todo->id}}">edit</button>
                                     <a class='actionButton' href="/api/todos/destroy/{{$todo->id}}" >delete</a>
                                 </div>
                             </div>
