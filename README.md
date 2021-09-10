@@ -4,6 +4,8 @@ Développé sous laravel, cette petite aplication vous permetra d'enregistrer de
 
 ### Configuratio de l'application
 
+- Vérifier que Composer et PHP sont instalé et à jour
+
 - Créez une nouvelle base de donnée qui servira de base à l'application
 
 - Clonez le repo 
