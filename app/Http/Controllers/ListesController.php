@@ -90,10 +90,11 @@ class ListesController extends Controller
     {
         $existingListe = Listes::find($id);
         if($existingListe) {
-            $existingListe->finished = $request->item['finished'] ? true : false;
+            $existingListe->finished = $request->finished ? true : false;
+            $existingListe->name = $request->name;
             $existingListe->save();
 
-            return $existingListe;
+            return redirect('/api');
         }
 
         return "liste not found";

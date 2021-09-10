@@ -23,14 +23,14 @@ Route::get('/', [ListesController::class, 'index']);
 
 Route::prefix('/listes')->group(function(){
     Route::post('/store', [ListesController::class, 'store']);
-    Route::put('/update/{id}', [ListesController::class, 'update']);
+    Route::post('/update/{id}', [ListesController::class, 'update']);
     Route::get('/destroy/{id}', [ListesController::class, 'destroy']);
     } 
 );
 Route::get('/todos', [TodosController::class, 'index']);
 Route::prefix('/todos')->group(function(){
     Route::post('/store', [TodosController::class, 'store']);
-    Route::put('/update/{id}', [TodosController::class, 'update']);
+    Route::post('/update/{id}', [TodosController::class, 'update']);
     Route::get('/destroy/{id}', [TodosController::class, 'destroy']);
     } 
 );
