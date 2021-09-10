@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>todoListe </title>
         <link href='/css/style.css' rel="stylesheet">
+        <link href='/css/all.min.css' rel="stylesheet">
+        
        
     </head>
     <body>
@@ -16,8 +18,15 @@
                 <ul class="listeTodoListe">
                     @foreach($todoListe as $todo)
                         <li>
-                            <div>
-                                <p class='listeContent' id="content{{$todo->id}}">
+                            <div class='contentAndCheck' id="content{{$todo->id}}">
+                                <a class='actionButton checkButton' href="/api/todos/updateState/{{$todo->id}}">
+                                    @if($todo->finished)         
+                                    <i class="fas fa-check"></i>
+                                    @else
+                                    <i class="fas fa-times"></i>
+                                    @endif
+                                </a>
+                                <p class='listeContent' >
                                 {{$todo->content}}
                                 </p>
                             </div>
@@ -28,7 +37,7 @@
                                     <form action="/api/todos/update/{{$todo->id}}" method="post" class="form-example">
                                         <div class="">
                                             <label for="contentUpdate"></label>
-                                            <input type="text" name="name" id="contentUpdate" value=<?php echo $todo->content ?>  />
+                                            <input type="text" name="content" id="contentUpdate" value="{{$todo->content}}"  />
                                         </div>
                                         <div class="">
                                             <input type="submit" value="save!">

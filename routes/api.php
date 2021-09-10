@@ -31,6 +31,7 @@ Route::get('/todos', [TodosController::class, 'index']);
 Route::prefix('/todos')->group(function(){
     Route::post('/store', [TodosController::class, 'store']);
     Route::post('/update/{id}', [TodosController::class, 'update']);
+    Route::get('/updateState/{id}', [TodosController::class, 'updateState']);
     Route::get('/destroy/{id}', [TodosController::class, 'destroy']);
     } 
 );

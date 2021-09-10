@@ -26,7 +26,7 @@
                                 <form action="/api/listes/update/{{$liste->id}}" method="post" class="form-example">
                                     <div class="">
                                         <label for="nameUpdate"></label>
-                                        <input type="text" name="name" id="nameUpdate" value=<?php echo $liste->name ?>  />
+                                        <input type="text" name="name" id="nameUpdate" value="{{$liste->name}}" />
                                     </div>
                                     <div class="form-example">
                                         <input type="submit" value="save!">

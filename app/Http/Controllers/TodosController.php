@@ -73,15 +73,33 @@ class TodosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         $existingTodo = Todos::find($id);
+        $listeId= $existingTodo->liste_id;
+
         if($existingTodo) {
-            $existingTodo->finished = $request->item['finished'] ? true : false;
-            $existingTodo->content = $request->item['content'];
+            $existingTodo->content = $request->content;
             $existingTodo->save();
 
-            return $existingTodo;
+            return redirect("/api/todo_liste/$listeId");
+        }
+
+        return "todo item not found";
+    }
+
+    public function updateState(Request $request, $id)
+    {
+        $existingTodo = Todos::find($id);
+        $listeId= $existingTodo->liste_id;
+
+        if($existingTodo) {
+
+            $existingTodo->finished = !$existingTodo->finished;
+            $existingTodo->save();
+
+            return redirect("/api/todo_liste/$listeId");
         }
 
         return "todo item not found";
